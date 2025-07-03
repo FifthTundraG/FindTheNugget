@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlne8pu4urhvq"]
+
+[ext_resource type="Script" uid="uid://bkxus05witw6p" path="res://scripts/player.gd" id="1_1bo12"]
+[ext_resource type="PackedScene" uid="uid://xbi1ebxuh3kg" path="res://scenes/GUI.tscn" id="2_dqkch"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_djfvq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_25r4q"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_1bo12")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_djfvq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998963, 0)
+mesh = SubResource("CapsuleMesh_25r4q")
+
+[node name="Neck" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50519, 0)
+cull_mask = 524287
+current = true
+
+[node name="GUI" parent="." instance=ExtResource("2_dqkch")]
